@@ -14,7 +14,7 @@ def sommaBin(lista):
         
     return lista
 
-def Calcolo():
+def Calcolo(event):
     Pulisci()
     indexVar = -1
     carUsed = []
@@ -96,8 +96,10 @@ Informazaioni_output.grid(row = 5, padx=10, pady=10, sticky="n") #
 
 #Informazaioni_output.config(wraplength=window.winfo_width())
 
+
 Fx_input = tk.Entry()
 Fx_input.grid(row=10)
+Fx_input.bind("<Return>", Calcolo)
 
 bottone_conferma = tk.Button(text="Conferma funzione", command=Calcolo)
 bottone_conferma.grid(row=20)
