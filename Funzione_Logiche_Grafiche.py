@@ -12,7 +12,7 @@ def sommaBin(lista):
                 lista[r] = False
             break
         
-    return lista
+    return lista 
 
 def on_enter(event):
     Calcolo()
@@ -40,6 +40,7 @@ def Calcolo():
                 indice = carUsed.index(c.upper())
             except ValueError:
                 indexVar+=1
+                
                 carUsed.append(c.upper())
                 boolVar.append(False)
             indice = indexVar
@@ -109,8 +110,6 @@ bottone_conferma.grid(row=20)
 
 text_output = tk.Label(window, text='')
 text_output.grid(row = 30)
-
-
 
 if __name__ == "__main__":
     window.mainloop() 
