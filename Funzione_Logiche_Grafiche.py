@@ -1,8 +1,6 @@
 # This Python file uses the following encoding: utf-8
 import os, sys
 import tkinter as tk
-
-
 strFinal = ''
 #codice con calcoli
 def sommaBin(lista):
@@ -14,9 +12,12 @@ def sommaBin(lista):
                 lista[r] = False
             break
         
-    return lista
+    return lista 
 
-def Calcolo(event):
+def on_enter(event):
+    Calcolo()
+
+def Calcolo():
     Pulisci()
     indexVar = -1
     carUsed = []
@@ -39,6 +40,7 @@ def Calcolo(event):
                 indice = carUsed.index(c.upper())
             except ValueError:
                 indexVar+=1
+                
                 carUsed.append(c.upper())
                 boolVar.append(False)
             indice = indexVar
@@ -87,23 +89,10 @@ def Calcolo(event):
 def Pulisci():
     text_output.config(text="")
 
-#GRAFICA
-Larghezza = 680
-Altezza = 20
-
-def on_resize(event):
-    # Ottieni le nuove dimensioni della finestra
-    Larghezza = event.width
-    Altezza = event.height
-
-print(Altezza)
-
-
+#grafica
 window = tk.Tk()
-window.geometry("680x700")
+window.geometry("600x500")
 window.title("Calcolatore funzioni logiche")
-window.bind("<Configure>", on_resize)
-
 #window.configure(background="white")
 
 Informazaioni_output = tk.Label(window, text="La variabili della funzione devono essere espresse come delle single lettere, il sistema non è case-sensitive. \nGli operatori logici DEVONO essere espressi con le seguenti forme: \n  AND => * \n  OR => + \n  NOT => ! \n  Usare le parentesi tonde nel caso fosse necessario\n  ")
@@ -111,10 +100,9 @@ Informazaioni_output.grid(row = 5, padx=10, pady=10, sticky="n") #
 
 #Informazaioni_output.config(wraplength=window.winfo_width())
 
-
 Fx_input = tk.Entry()
 Fx_input.grid(row=10)
-Fx_input.bind("<Return>", Calcolo)
+Fx_input.bind("<Return>", on_enter)
 
 bottone_conferma = tk.Button(text="Conferma funzione", command=Calcolo)
 bottone_conferma.grid(row=20)
@@ -123,31 +111,5 @@ bottone_conferma.grid(row=20)
 text_output = tk.Label(window, text='')
 text_output.grid(row = 30)
 
-
-
 if __name__ == "__main__":
     window.mainloop() 
-
-
-    import tkinter as tk
-
-
-
-    # Aggiorna la variabile in funzione delle nuove dimensioni
-    my_variable.set(f"La larghezza è {new_width} e l'altezza è {new_height}")
-
-root = tk.Tk()
-
-# Creazione di una variabile Tkinter
-my_variable = tk.StringVar()
-my_variable.set("")
-
-# Creazione di un widget Label per visualizzare la variabile
-my_label = tk.Label(root, textvariable=my_variable)
-my_label.pack()
-
-# Bind dell'evento di ridimensionamento della finestra alla funzione on_resize
-root.bind("<Configure>", on_resize)
-
-root.mainloop()
-
