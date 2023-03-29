@@ -91,25 +91,37 @@ def Pulisci():
 
 #grafica
 window = tk.Tk()
-window.geometry("600x500")
+
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+
+# calcola le dimensioni della finestra in base alle percentuali desiderate
+window_width = int(screen_width * 0.8)  # 80% dello schermo
+window_height = int(screen_height * 0.6)  # 60% dello schermo
+
+# imposta la geometria della finestra
+window.geometry(f"{window_width}x{window_height}+{int((screen_width - window_width)/2)}+{int((screen_height - window_height)/2)}")
+
+#window.geometry("650x1000")
 window.title("Calcolatore funzioni logiche")
 #window.configure(background="white")
 
 Informazaioni_output = tk.Label(window, text="La variabili della funzione devono essere espresse come delle single lettere, il sistema non è case-sensitive. \nGli operatori logici DEVONO essere espressi con le seguenti forme: \n  AND => * \n  OR => + \n  NOT => ! \n  Usare le parentesi tonde nel caso fosse necessario\n  ")
-Informazaioni_output.grid(row = 5, padx=10, pady=10, sticky="n") #
+Informazaioni_output.place(relx=0.5, rely=0.1, anchor="center")
+
 
 #Informazaioni_output.config(wraplength=window.winfo_width())
 
 Fx_input = tk.Entry()
-Fx_input.grid(row=10)
+Fx_input.place(relx=0.5, rely=0.2, anchor="center")#.grid(row=10)
 Fx_input.bind("<Return>", on_enter)
 
 bottone_conferma = tk.Button(text="Conferma funzione", command=Calcolo)
-bottone_conferma.grid(row=20)
+bottone_conferma.place(relx=0.5, rely=0.3, anchor="center")#.grid(row=20)
 
 
 text_output = tk.Label(window, text='')
-text_output.grid(row = 30)
+text_output.place(relx=0.3, rely=0.5, anchor="center")#.grid(row = 30)
 
 if __name__ == "__main__":
     window.mainloop() 
