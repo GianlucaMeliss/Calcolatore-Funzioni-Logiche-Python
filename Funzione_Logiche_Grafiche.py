@@ -92,12 +92,24 @@ def Calcolo():
 def Pulisci():
     text_output.config(text="")
 
-def SalvaFunz():
-    file_uno = open("FunzioniSalvate.json", "w")
-    file_uno.close()
+def ScriviSuFile(dictFunzioni):
+    filejs = open("FunzioniSalvate.json", "w")
+    filejs.write(json.dumps(dictFunzioni))
+    filejs.close()
 
+def LeggiDalFile():
+    filejs = open("FunzioniSalvate.json", "r")
+    dictFunzioni = json.loads(filejs.read())
+    filejs.close()
+    return dictFunzioni
+
+def AggiungiFunzFile():
+    datiFileJs = LeggiDalFile()
+    datiFileJs["f"+str(datiFileJs["Nfunzioni"])] = (Fx_input.get())
+    datiFileJs["Nfunzioni"]=datiFileJs["Nfunzioni"]+1
+    ScriviSuFile(datiFileJs)
     return False
-    
+
 #grafica
 window = tk.Tk()
 
@@ -127,6 +139,9 @@ Fx_input.bind("<Return>", on_enter)
 
 bottone_conferma = tk.Button(text="Conferma funzione", command=Calcolo)
 bottone_conferma.place(relx=0.25, rely=0.4, anchor="center")#.grid(row=20)
+
+bottone_aggiungi = tk.Button(text="Salva Funzione", command=AggiungiFunzFile)
+bottone_aggiungi.place(relx=0.25, rely=0.5, anchor="center")
 
 
 text_output = tk.Label(window, text='')
