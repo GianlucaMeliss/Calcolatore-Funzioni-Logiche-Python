@@ -107,21 +107,21 @@ window.title("Calcolatore funzioni logiche")
 #window.configure(background="white")
 
 Informazaioni_output = tk.Label(window, text="La variabili della funzione devono essere espresse come delle single lettere, il sistema non è case-sensitive. \nGli operatori logici DEVONO essere espressi con le seguenti forme: \n  AND => * \n  OR => + \n  NOT => ! \n  Usare le parentesi tonde nel caso fosse necessario\n  ")
-Informazaioni_output.place(relx=0.3, rely=0.2, anchor="center")
+Informazaioni_output.place(relx=0.25, rely=0.2, anchor="center")
 
 
 #Informazaioni_output.config(wraplength=window.winfo_width())
 
 Fx_input = tk.Entry()
-Fx_input.place(relx=0.5, rely=0.3, anchor="center")#.grid(row=10)
+Fx_input.place(relx=0.25, rely=0.3, anchor="center")#.grid(row=10)
 Fx_input.bind("<Return>", on_enter)
 
 bottone_conferma = tk.Button(text="Conferma funzione", command=Calcolo)
-bottone_conferma.place(relx=0.5, rely=0.4, anchor="center")#.grid(row=20)
+bottone_conferma.place(relx=0.25, rely=0.4, anchor="center")#.grid(row=20)
 
 
 text_output = tk.Label(window, text='')
-text_output.place(relx=0.3, rely=0.5, anchor="center")#.grid(row = 30)
+text_output.place(relx=0.75, anchor="center")#.grid(row = 30)
 
 if __name__ == "__main__":
     window.mainloop() 
