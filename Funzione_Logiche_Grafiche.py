@@ -1,6 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import os, sys
 import tkinter as tk
+import json
 strFinal = ''
 #codice con calcoli
 def sommaBin(lista):
@@ -91,8 +92,12 @@ def Calcolo():
 def Pulisci():
     text_output.config(text="")
 
-    
+def SalvaFunz():
+    file_uno = open("FunzioniSalvate.json", "w")
+    file_uno.close()
 
+    return False
+    
 #grafica
 window = tk.Tk()
 
