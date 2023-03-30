@@ -2,6 +2,8 @@
 import os, sys
 import tkinter as tk
 import json
+from tkinter import *
+
 strFinal = ''
 #codice con calcoli
 def sommaBin(lista):
@@ -108,7 +110,15 @@ def AggiungiFunzFile():
     datiFileJs["f"+str(datiFileJs["Nfunzioni"])] = (Fx_input.get())
     datiFileJs["Nfunzioni"]=datiFileJs["Nfunzioni"]+1
     ScriviSuFile(datiFileJs)
+    AggiornaLista()
     return False
+
+def AggiornaLista():
+    datiFileJs = LeggiDalFile()
+    Lista.Clear()
+    for d in datiFileJs:
+        if(d != "Nfunzioni"):
+            Lista.insert(END,str(datiFileJs[d]))
 
 #grafica
 window = tk.Tk()
@@ -143,6 +153,8 @@ bottone_conferma.place(relx=0.25, rely=0.4, anchor="center")#.grid(row=20)
 bottone_aggiungi = tk.Button(text="Salva Funzione", command=AggiungiFunzFile)
 bottone_aggiungi.place(relx=0.25, rely=0.5, anchor="center")
 
+Lista = Listbox(window)
+Lista.place(relx=0.4, rely=0.5, anchor="center")
 
 text_output = tk.Label(window, text='')
 text_output.place(relx=0.75, rely=0.5, anchor="center")#.grid(row = 30)
