@@ -82,7 +82,7 @@ def Calcolo():
         strFinal += ' ' + FxCalcolata
         #gestione tabella di verita
         boolVar = sommaBin(boolVar)
-
+    
     text_output.config(text=strFinal)
     
 
@@ -121,7 +121,7 @@ bottone_conferma.place(relx=0.25, rely=0.4, anchor="center")#.grid(row=20)
 
 
 text_output = tk.Label(window, text='')
-text_output.place(relx=0.75, anchor="center")#.grid(row = 30)
+text_output.place(relx=0.75, rely=0.5, anchor="center")#.grid(row = 30)
 
 if __name__ == "__main__":
     window.mainloop() 
