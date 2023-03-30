@@ -17,11 +17,13 @@ def sommaBin(lista):
 def on_enter(event):
     Calcolo()
 
+#ATENZIONE
+
 def Calcolo():
     Pulisci()
     indexVar = -1
     carUsed = []
-    boolVar = []
+    boolVar = []    
     comandoFinale = ''#stringa che conterrà la formula analizzata e codificata correttamente
 
 
@@ -88,6 +90,8 @@ def Calcolo():
 
 def Pulisci():
     text_output.config(text="")
+
+    
 
 #grafica
 window = tk.Tk()
