@@ -115,12 +115,13 @@ def AggiungiFunzFile():
 
 def AggiornaLista():
     datiFileJs = LeggiDalFile()
-    Lista.Clear()
+    Lista.delete(0,tk.END)
     for d in datiFileJs:
         if(d != "Nfunzioni"):
             Lista.insert(END,str(datiFileJs[d]))
 
 #grafica
+
 window = tk.Tk()
 
 screen_width = window.winfo_screenwidth()
@@ -155,6 +156,8 @@ bottone_aggiungi.place(relx=0.25, rely=0.5, anchor="center")
 
 Lista = Listbox(window)
 Lista.place(relx=0.4, rely=0.5, anchor="center")
+
+AggiornaLista()
 
 text_output = tk.Label(window, text='')
 text_output.place(relx=0.75, rely=0.5, anchor="center")#.grid(row = 30)
