@@ -120,6 +120,8 @@ def AggiornaLista():
         if(d != "Nfunzioni"):
             Lista.insert(END,str(datiFileJs[d]))
 
+def Deseleziona():
+    Lista.select_clear()
 #grafica
 
 window = tk.Tk()
@@ -156,6 +158,12 @@ bottone_aggiungi.place(relx=0.25, rely=0.5, anchor="center")
 
 Lista = Listbox(window)
 Lista.place(relx=0.4, rely=0.5, anchor="center")
+
+bottone_deselect = tk.Button(text="Deseleziona ", command=Deseleziona)
+bottone_deselect.place(relx=0.25, rely=0.6, anchor="center")
+
+
+
 
 AggiornaLista()
 
