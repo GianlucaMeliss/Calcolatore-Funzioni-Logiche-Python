@@ -88,7 +88,9 @@ def Calcolo():
         #gestione tabella di verita
         boolVar = sommaBin(boolVar)
     
+    print(comandoFinale)
     text_output.config(text=strFinal)
+    
     
 
 def Pulisci():
@@ -111,6 +113,7 @@ def AggiungiFunzFile():
     datiFileJs["Nfunzioni"]=datiFileJs["Nfunzioni"]+1
     ScriviSuFile(datiFileJs)
     AggiornaLista()
+    
     return False
 
 def AggiornaLista():
@@ -121,7 +124,27 @@ def AggiornaLista():
             Lista.insert(END,str(datiFileJs[d]))
 
 def Deseleziona():
-    Lista.select_clear()
+    selection = Lista.curselection()
+    if selection:
+        Lista.selection_clear(selection[0])
+
+def Carica():
+    index = Lista.curselection()[0]
+    selezionato = Lista.get(index)
+    Fx_input.insert(0,selezionato)
+
+def Elimina():
+    index = Lista.curselection()[0]
+    if(index >= 0):
+        selezionato = Lista.get(index)
+        dictf = LeggiDalFile()
+        for c in dictf:
+            if(dictf[c] == selezionato):
+                del dictf[c]
+                dictf["Nfunzioni"] = dictf["Nfunzioni"]-1
+                break
+        ScriviSuFile(dictf)
+        AggiornaLista()
 #grafica
 
 window = tk.Tk()
@@ -159,8 +182,14 @@ bottone_aggiungi.place(relx=0.25, rely=0.5, anchor="center")
 Lista = Listbox(window)
 Lista.place(relx=0.4, rely=0.5, anchor="center")
 
+bottone_carica = tk.Button(text="Carica", command=Carica)
+bottone_carica.place(relx=0.25, rely=0.55, anchor="center")
+
+bottone_elimina = tk.Button(text="Elimina", command=Elimina)
+bottone_elimina.place(relx=0.25, rely=0.60, anchor="center")
+
 bottone_deselect = tk.Button(text="Deseleziona ", command=Deseleziona)
-bottone_deselect.place(relx=0.25, rely=0.6, anchor="center")
+bottone_deselect.place(relx=0.25, rely=0.65, anchor="center")
 
 
 
